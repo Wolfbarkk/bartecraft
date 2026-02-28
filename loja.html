@@ -66,23 +66,6 @@
 
             <div id="pix-section" style="display: none; margin-top: 3rem; text-align: center; background: rgba(255, 255, 255, 0.05); padding: 3rem; border-radius: 20px;">
                 <h3 style="font-size: 2rem; margin-bottom: 2rem;">Pagamento via PIX</h3>
-                <div style="background: white; padding: 2rem; border-radius: 15px; display: inline-block;">
-                    <p style="color: #333; font-size: 1.2rem; margin-bottom: 1rem;">Envie R$ 19,90 para:</p>
-                    <p style="color: #6c5ce7; font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">wolfbr910@gmail.com</p>
-                    <button onclick="copiarPix()" style="background: #6c5ce7; color: white; border: none; padding: 1rem 2rem; border-radius: 10px; cursor: pointer; font-size: 1rem;">
-                        <i class="fas fa-copy"></i> Copiar Chave PIX
-                    </button>
-                </div>
-                <div style="margin-top: 2rem; padding: 2rem; background: rgba(255, 255, 255, 0.03); border-radius: 15px;">
-                    <h4 style="font-size: 1.5rem; margin-bottom: 1rem;">Após o pagamento:</h4>
-                    <ol style="text-align: left; max-width: 500px; margin: 0 auto; line-height: 2;">
-                        <li>Faça o PIX de R$ 19,90</li>
-                        <li>Tire print do comprovante</li>
-                        <li>Entre no Discord: <a href="https://discord.gg/6yb2AsJ3" target="_blank" style="color: #6c5ce7;">discord.gg/6yb2AsJ3</a></li>
-                        <li>Envie o comprovante com seu nick do Minecraft</li>
-                        <li>Aguarde a ativação (até 24h)</li>
-                    </ol>
-                </div>
             </div>
         </div>
     </section>
@@ -126,15 +109,47 @@
 
     <script src="js/script.js"></script>
     <script>
-        function mostrarPix() {
-            document.getElementById('pix-section').style.display = 'block';
-            document.getElementById('pix-section').scrollIntoView({ behavior: 'smooth' });
+        const API_URL = 'https://bartexcraft.onrender.com';
+
+        async function mostrarPix() {
+            const nick = prompt('Digite seu nick do Minecraft:');
+            if (!nick) return;
+
+            try {
+                const response = await fetch(`${API_URL}/criar-pagamento`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nick })
+                });
+
+                const data = await response.json();
+                
+                if (data.qr_code) {
+                    document.getElementById('pix-section').innerHTML = `
+                        <h3 style="font-size: 2rem; margin-bottom: 2rem;">Pagamento via PIX</h3>
+                        <div style="background: white; padding: 2rem; border-radius: 15px; display: inline-block;">
+                            <img src="data:image/png;base64,${data.qr_code_base64}" style="max-width: 300px;">
+                            <p style="color: #333; margin-top: 1rem;">Escaneie o QR Code ou copie o código PIX</p>
+                            <button onclick="copiarPix('${data.qr_code}')" style="background: #6c5ce7; color: white; border: none; padding: 1rem 2rem; border-radius: 10px; cursor: pointer; font-size: 1rem; margin-top: 1rem;">
+                                <i class="fas fa-copy"></i> Copiar Código PIX
+                            </button>
+                        </div>
+                        <p style="margin-top: 2rem; font-size: 1.2rem;">Aguardando pagamento... ⏳</p>
+                        <p style="color: #6c5ce7;">Seu VIP será ativado automaticamente após o pagamento!</p>
+                    `;
+                    document.getElementById('pix-section').style.display = 'block';
+                    document.getElementById('pix-section').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert('Erro ao gerar pagamento. Tente novamente.');
+                }
+            } catch (error) {
+                alert('Erro ao conectar com o servidor. Tente novamente.');
+            }
         }
 
-        function copiarPix() {
-            const pix = 'wolfbr910@gmail.com';
-            navigator.clipboard.writeText(pix).then(() => {
-                alert('Chave PIX copiada: ' + pix);
+        function copiarPix(codigo) {
+            navigator.clipboard.writeText(codigo).then(() => {
+                alert('Código PIX copiado! Cole no seu app de pagamento.');
             });
         }
     </script>
