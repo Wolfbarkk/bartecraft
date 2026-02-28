@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BartexCraft - Servidor de Minecraft</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-cube"></i>
+                <span>BartexCraft</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#features">Recursos</a></li>
+                <li><a href="#leaderboard">Placar</a></li>
+                <li><a href="#vip">VIP</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#staff">Staff</a></li>
+                <li><a href="#loja" class="btn-loja">Loja</a></li>
+            </ul>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="pt" onclick="setLanguage('pt')" title="Português">🇧🇷</button>
+                <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English">🇺🇸</button>
+                <button class="lang-btn" data-lang="ar" onclick="setLanguage('ar')" title="العربية">🇸🇦</button>
+                <button class="lang-btn" data-lang="es" onclick="setLanguage('es')" title="Español">🇪🇸</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')" title="日本語">🇯🇵</button>
+                <button class="lang-btn" data-lang="ko" onclick="setLanguage('ko')" title="한국어">🇰🇷</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="BartexCraft">BartexCraft</h1>
+            <p class="subtitle">O melhor servidor de Bridge Practice do Brasil</p>
+            <div class="server-info">
+                <div class="info-box">
+                    <i class="fas fa-server"></i>
+                    <span id="server-ip">bartexcraft.net</span>
+                    <button class="copy-btn" onclick="copyIP()">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-users"></i>
+                    <span id="players-online">0/1000</span>
+                </div>
+            </div>
+            <a href="javascript:void(0);" class="cta-button" onclick="openPaymentModal()">
+                <i class="fas fa-shopping-cart"></i>
+                Comprar VIP
+            </a>
+        </div>
+        <div class="particles" id="particles"></div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Recursos Exclusivos</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Múltiplos Modos</h3>
+                    <p>ExtraEasy, ExtraExtraShort, ExtraShort, Short, Normal, Long, Infinite!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Sistema de Replay</h3>
+                    <p>Reveja suas jogadas com nosso sistema avançado de replay</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Ilhas Customizadas</h3>
+                    <p>Jogue em ilhas personalizadas criadas pela equipe</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Sistema Social</h3>
+                    <p>Amigos, Party, Clans e muito mais!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Skins Customizadas</h3>
+                    <p>Use qualquer skin, até mesmo por URL!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Modo Solo</h3>
+                    <p>Treine sozinho ou com amigos em instâncias privadas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="leaderboard" class="leaderboard-section">
+        <div class="container">
+            <h2 class="section-title">Placar de Pontes</h2>
+            <div class="category-tabs">
+                <button class="category-btn active" data-category="vanilla">VANILLA</button>
+                <button class="category-btn" data-category="client">CLIENT</button>
+            </div>
+            <div class="leaderboard-tabs">
+                <button class="tab-btn active" data-mode="extraeasy">ExtraEasy</button>
+                <button class="tab-btn" data-mode="extraextrashort">ExtraExtraShort</button>
+                <button class="tab-btn" data-mode="extrashort">ExtraShort</button>
+                <button class="tab-btn" data-mode="short">Short</button>
+                <button class="tab-btn" data-mode="normal">Normal</button>
+                <button class="tab-btn" data-mode="long">Long</button>
+            </div>
+            <div class="leaderboard-content">
+                <div class="empty-state">
+                    <i class="fas fa-trophy" style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                    <h3>Nenhum recorde ainda</h3>
+                    <p>Seja o primeiro a enviar seu tempo!</p>
+                </div>
+                <div id="leaderboard-list" class="leaderboard-list" style="display: none;"></div>
+            </div>
+            <button class="submit-replay-btn" onclick="openReplayModal()">
+                <i class="fas fa-upload"></i> Enviar Replay
+            </button>
+        </div>
+    </section>
+
+    <div id="replayModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReplayModal()">&times;</span>
+            <h2>Enviar Replay</h2>
+            <form id="replayForm">
+                <div class="form-group">
+                    <label>Nome do Jogador</label>
+                    <input type="text" id="playerName" required placeholder="Seu nick no servidor">
+                </div>
+                <div class="form-group">
+                    <label>Link do Vídeo</label>
+                    <input type="url" id="videoLink" required placeholder="YouTube, Twitch, etc.">
+                </div>
+                <div class="form-group">
+                    <label>Categoria</label>
+                    <select id="category" required>
+                        <option value="vanilla">VANILLA</option>
+                        <option value="client">CLIENT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Modo</label>
+                    <select id="gameMode" required>
+                        <option value="extraeasy">ExtraEasy</option>
+                        <option value="extraextrashort">ExtraExtraShort</option>
+                        <option value="extrashort">ExtraShort</option>
+                        <option value="short">Short</option>
+                        <option value="normal">Normal</option>
+                        <option value="long">Long</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tempo (segundos)</label>
+                    <input type="number" id="timeSeconds" step="0.001" required placeholder="Ex: 23.456">
+                </div>
+                <div class="form-group">
+                    <label>Mensagem (opcional)</label>
+                    <textarea id="message" rows="3" placeholder="Alguma observação sobre o recorde..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Enviar para Verificação
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <h2>Comprar VIP Vitalício</h2>
+            <div class="payment-info">
+                <div class="price-display">
+                    <span class="price-label">Valor:</span>
+                    <span class="price-value">R$ 25,00</span>
+                </div>
+                
+                <div class="payment-form">
+                    <h3>Dados para Compra</h3>
+                    <form id="vipPurchaseForm">
+                        <div class="form-group">
+                            <label>Nick no Servidor</label>
+                            <input type="text" id="playerNick" required placeholder="Seu nick exato no jogo">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="playerEmail" required placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Método de Pagamento</label>
+                            <select id="paymentMethod" required>
+                                <option value="pix">PIX (Instantâneo)</option>
+                                <option value="paypal">PayPal (Internacional)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="payment-btn">
+                            <i class="fas fa-shopping-cart"></i> Ir para Pagamento
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="payment-instructions">
+                    <h4>Como funciona:</h4>
+                    <ol>
+                        <li>Preencha seus dados acima</li>
+                        <li>Escolha o método de pagamento</li>
+                        <li>Complete o pagamento na página segura</li>
+                        <li>Envie o comprovante no Discord</li>
+                        <li>Receba seu VIP em até 5 minutos!</li>
+                    </ol>
+                </div>
+                
+                <div class="discord-link">
+                    <a href="https://discord.gg/6yb2AsJ3" target="_blank" class="discord-btn">
+                        <i class="fab fa-discord"></i> Suporte no Discord
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="vip" class="vip-section">
+        <div class="container">
+            <h2 class="section-title">Plano VIP</h2>
+            <div class="vip-grid" style="justify-content: center;">
+                <div class="vip-card featured" style="max-width: 400px;">
+                    <div class="badge">VITALÍCIO</div>
+                    <div class="vip-header">
+                        <h3>VIP</h3>
+                        <div class="price">
+                            <span class="currency">R$</span>
+                            <span class="amount">25,00</span>
+                            <span class="period">/único</span>
+                        </div>
+                    </div>
+                    <ul class="vip-features">
+                        <li><i class="fas fa-check"></i> Tag VIP colorida</li>
+                        <li><i class="fas fa-check"></i> 20 replays por modo</li>
+                        <li><i class="fas fa-check"></i> 200 amigos</li>
+                        <li><i class="fas fa-check"></i> Ilhas customizadas</li>
+                        <li><i class="fas fa-check"></i> Blocos customizados</li>
+                        <li><i class="fas fa-check"></i> /skin url</li>
+                        <li><i class="fas fa-check"></i> Party no solo</li>
+                        <li><i class="fas fa-check"></i> Benefícios vitalícios</li>
+                    </ul>
+                    <button type="button" class="vip-button" onclick="openPaymentModal()">Comprar Agora</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="vip-section">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="vip-card" style="margin-bottom: 1rem; text-align: left;">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Sobre o que é esse servidor?</h3>
+                    <p style="color: var(--gray);">Atualmente é um servidor brasileiro/gringo que irá ter vários minigames futuramente, por enquanto o foco é o treino de ponte.</p>
+                </div>
+                <div class="vip-card" style="margin-bottom: 1rem; text-align: left;">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">É para pirata?</h3>
+                    <p style="color: var(--gray);">É sim.</p>
+                </div>
+                <div class="vip-card" style="margin-bottom: 1rem; text-align: left;">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">AuAu?</h3>
+                    <p style="color: var(--gray);">auau.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section" style="background: var(--darker); padding: 5rem 0;">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; margin-bottom: 1rem; cursor: pointer;">
+                <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 1.1rem;">
+                    <span>Sobre o que é esse servidor?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--gray); padding-top: 0;">
+                    Atualmente é um servidor brasileiro/gringo que irá ter vários minigames futuramente, por enquanto o foco é o treino de ponte.
+                </div>
+            </div>
+            <div class="faq-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; margin-bottom: 1rem; cursor: pointer;">
+                <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 1.1rem;">
+                    <span>É para pirata?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--gray); padding-top: 0;">
+                    É sim.
+                </div>
+            </div>
+            <div class="faq-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; margin-bottom: 1rem; cursor: pointer;">
+                <div class="faq-question" style="display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 1.1rem;">
+                    <span>AuAu?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--gray); padding-top: 0;">
+                    auau.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="staff" class="staff-section">
+        <div class="container">
+            <h2 class="section-title">Nossa Equipe</h2>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <img src="https://minotar.net/helm/_Wolfbark_/100.png" alt="_Wolfbark_">
+                    </div>
+                    <h3>_Wolfbark_</h3>
+                    <span class="role admin">Administrador</span>
+                    <p>Fundador e desenvolvedor principal</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <img src="https://minotar.net/helm/Davdk/100.png" alt="Davdk">
+                    </div>
+                    <h3>Davdk</h3>
+                    <span class="role admin">Administrador</span>
+                    <p>Equipe de administração</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <img src="https://minotar.net/helm/Vortex_shade/100.png" alt="Vortex_shade">
+                    </div>
+                    <h3>Vortex_shade</h3>
+                    <span class="role admin">Administrador</span>
+                    <p>Equipe de administração</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <img src="https://minotar.net/helm/The_sun001/100.png" alt="The_sun001">
+                    </div>
+                    <h3>The_sun001</h3>
+                    <span class="role admin">Administrador</span>
+                    <p>Equipe de administração</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <img src="https://minotar.net/helm/Arroz_/100.png" alt="Arroz_">
+                    </div>
+                    <h3>Arroz_</h3>
+                    <span class="role admin">Administrador</span>
+                    <p>Equipe de administração</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <img src="https://minotar.net/helm/Amofazertelly/100.png" alt="Amofazertelly">
+                    </div>
+                    <h3>Amofazertelly</h3>
+                    <span class="role admin">Administrador</span>
+                    <p>Equipe de administração</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BartexCraft</h4>
+                    <p>O melhor servidor de Bridge Practice do Brasil</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/6yb2AsJ3" target="_blank"><i class="fab fa-discord"></i></a>
+                        <a href="https://www.youtube.com/@Wolfbarkbark" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@wolfbarkk?lang=pt-BR" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#features">Recursos</a></li>
+                        <li><a href="#vip">VIP</a></li>
+                        <li><a href="#loja">Loja</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Regras</h4>
+                    <ul>
+                        <li>Ser um ser humano simpático, gentil e ético</li>
+                        <li>Não chame os amiguinhos de random (toma mute)</li>
+                        <li>Não faça construções obscenas</li>
+                        <li>Não use xit, seu safadu</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BartexCraft. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', initLanguage);
+        
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('.faq-question i');
+                if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
+                    answer.style.maxHeight = '0';
+                    answer.style.paddingTop = '0';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    answer.style.maxHeight = '200px';
+                    answer.style.paddingTop = '1rem';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Category tabs
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Leaderboard tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Modal functions
+        function openReplayModal() {
+            document.getElementById('replayModal').style.display = 'block';
+        }
+
+        function closeReplayModal() {
+            document.getElementById('replayModal').style.display = 'none';
+        }
+
+        function openPaymentModal() {
+            document.getElementById('paymentModal').style.display = 'block';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function copyPixKey() {
+            const pixKey = document.getElementById('pixKey').textContent;
+            navigator.clipboard.writeText(pixKey).then(() => {
+                alert('Chave PIX copiada: ' + pixKey);
+            });
+        }
+
+        // VIP Purchase Form
+        document.getElementById('vipPurchaseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nick = document.getElementById('playerNick').value;
+            const email = document.getElementById('playerEmail').value;
+            const method = document.getElementById('paymentMethod').value;
+            
+            if (method === 'pix') {
+                const message = `Nick: ${nick}\nEmail: ${email}\nValor: R$ 25,00\n\nPague via PIX: wolfbr910@gmail.com`;
+                alert('Dados salvos!\n\n' + message + '\n\nEnvie o comprovante no Discord.');
+                window.open('https://discord.gg/6yb2AsJ3', '_blank');
+            } else if (method === 'paypal') {
+                // PayPal: Crie um link de pagamento em https://www.paypal.com/paymentbuttons
+                alert('Nick: ' + nick + '\nEmail: ' + email + '\n\nRedirecionando para PayPal...');
+                window.open('https://www.paypal.com/paypalme/wolfbr910/25', '_blank');
+            }
+        });
+
+        window.onclick = function(event) {
+            const replayModal = document.getElementById('replayModal');
+            const paymentModal = document.getElementById('paymentModal');
+            if (event.target == replayModal) {
+                replayModal.style.display = 'none';
+            }
+            if (event.target == paymentModal) {
+                paymentModal.style.display = 'none';
+            }
+        }
+
+        // Form submission
+        document.getElementById('replayForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                player: document.getElementById('playerName').value,
+                video: document.getElementById('videoLink').value,
+                category: document.getElementById('category').value,
+                mode: document.getElementById('gameMode').value,
+                time: document.getElementById('timeSeconds').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Enviar para admin (implementar backend)
+            alert('Replay enviado para verificação! Os admins irão analisar em breve.');
+            closeReplayModal();
+            this.reset();
+        });
+    </script>
+</body>
+</html>

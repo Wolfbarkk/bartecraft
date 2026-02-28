@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja - BartexCraft</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-cube"></i>
+                <span>BartexCraft</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#features">Recursos</a></li>
+                <li><a href="index.html#vip">VIP</a></li>
+                <li><a href="index.html#staff">Staff</a></li>
+                <li><a href="loja.html" class="btn-loja">Loja</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="shop-hero" style="min-height: 40vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center; padding: 2rem;">
+        <div>
+            <h1><i class="fas fa-shopping-cart"></i> Loja VIP</h1>
+            <p style="font-size: 1.3rem;">Adquira benefícios vitalícios para seu jogo!</p>
+        </div>
+    </section>
+
+    <section class="shop-content" style="padding: 5rem 0; background: var(--dark);">
+        <div class="container">
+            <h2 class="section-title">VIP Vitalício</h2>
+            <div class="vip-grid" style="justify-content: center;">
+                <div class="vip-card featured" style="max-width: 450px;">
+                    <div class="badge">VITALÍCIO</div>
+                    <div class="vip-header">
+                        <h3>VIP</h3>
+                        <div class="price">
+                            <span class="currency">R$</span>
+                            <span class="amount">19,90</span>
+                            <span class="period">/único</span>
+                        </div>
+                    </div>
+                    <ul class="vip-features">
+                        <li><i class="fas fa-check"></i> Tag VIP colorida</li>
+                        <li><i class="fas fa-check"></i> 20 replays por modo</li>
+                        <li><i class="fas fa-check"></i> 200 amigos</li>
+                        <li><i class="fas fa-check"></i> Ilhas customizadas</li>
+                        <li><i class="fas fa-check"></i> Blocos customizados</li>
+                        <li><i class="fas fa-check"></i> /skin url</li>
+                        <li><i class="fas fa-check"></i> Party no solo</li>
+                        <li><i class="fas fa-check"></i> Benefícios vitalícios</li>
+                    </ul>
+                    <button class="vip-button" onclick="mostrarPix()">Comprar com PIX</button>
+                </div>
+            </div>
+
+            <div id="pix-section" style="display: none; margin-top: 3rem; text-align: center; background: rgba(255, 255, 255, 0.05); padding: 3rem; border-radius: 20px;">
+                <h3 style="font-size: 2rem; margin-bottom: 2rem;">Pagamento via PIX</h3>
+                <div style="background: white; padding: 2rem; border-radius: 15px; display: inline-block;">
+                    <p style="color: #333; font-size: 1.2rem; margin-bottom: 1rem;">Envie R$ 19,90 para:</p>
+                    <p style="color: #6c5ce7; font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">wolfbr910@gmail.com</p>
+                    <button onclick="copiarPix()" style="background: #6c5ce7; color: white; border: none; padding: 1rem 2rem; border-radius: 10px; cursor: pointer; font-size: 1rem;">
+                        <i class="fas fa-copy"></i> Copiar Chave PIX
+                    </button>
+                </div>
+                <div style="margin-top: 2rem; padding: 2rem; background: rgba(255, 255, 255, 0.03); border-radius: 15px;">
+                    <h4 style="font-size: 1.5rem; margin-bottom: 1rem;">Após o pagamento:</h4>
+                    <ol style="text-align: left; max-width: 500px; margin: 0 auto; line-height: 2;">
+                        <li>Faça o PIX de R$ 19,90</li>
+                        <li>Tire print do comprovante</li>
+                        <li>Entre no Discord: <a href="https://discord.gg/6yb2AsJ3" target="_blank" style="color: #6c5ce7;">discord.gg/6yb2AsJ3</a></li>
+                        <li>Envie o comprovante com seu nick do Minecraft</li>
+                        <li>Aguarde a ativação (até 24h)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BartexCraft</h4>
+                    <p>O melhor servidor de Bridge Practice do Brasil</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/6yb2AsJ3" target="_blank"><i class="fab fa-discord"></i></a>
+                        <a href="https://www.youtube.com/@Wolfbarkbark" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@wolfbarkk?lang=pt-BR" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#features">Recursos</a></li>
+                        <li><a href="index.html#vip">VIP</a></li>
+                        <li><a href="loja.html">Loja</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Regras</h4>
+                    <ul>
+                        <li>Ser um ser humano simpático, gentil e ético</li>
+                        <li>Não chame os amiguinhos de random (toma mute)</li>
+                        <li>Não faça construções obscenas</li>
+                        <li>Não use xit, seu safadu</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BartexCraft. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        function mostrarPix() {
+            document.getElementById('pix-section').style.display = 'block';
+            document.getElementById('pix-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copiarPix() {
+            const pix = 'wolfbr910@gmail.com';
+            navigator.clipboard.writeText(pix).then(() => {
+                alert('Chave PIX copiada: ' + pix);
+            });
+        }
+    </script>
+</body>
+</html>
